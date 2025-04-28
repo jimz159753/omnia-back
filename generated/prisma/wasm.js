@@ -126,6 +126,13 @@ exports.Prisma.ClientScalarFieldEnum = {
   phone: 'phone'
 };
 
+exports.Prisma.UserScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  password: 'password',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -138,7 +145,8 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Client: 'Client'
+  Client: 'Client',
+  User: 'User'
 };
 
 /**
