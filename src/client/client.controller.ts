@@ -9,14 +9,16 @@ import {
 } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { UpdateClientDto } from './dto/update-client.dto';
-import { Prisma } from 'generated/prisma';
+import { CreateClientDto } from './dto/create-client.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Clients')
 @Controller('client')
 export class ClientController {
   constructor(private readonly clientService: ClientService) {}
 
   @Post()
-  create(@Body() createClientDto: Prisma.ClientCreateInput) {
+  create(@Body() createClientDto: CreateClientDto) {
     return this.clientService.create(createClientDto);
   }
 
