@@ -16,9 +16,7 @@ export class EventTypeService {
   }
 
   async findAll() {
-    const res =
-      await this.calApiService.get<IEventTypeResponse>('/event-types');
-    return res;
+    return await this.calApiService.get<IEventTypeResponse>('/event-types');
   }
 
   async findOne(id: number) {
