@@ -21,4 +21,15 @@ export class BookingService {
   async findOne(id: number) {
     return await this.calApiService.get<BookingResponse>(`/bookings/${id}`);
   }
+
+  async findByEventTypeIds(eventTypeIds: string) {
+    return await this.calApiService.get<BookingResponse>(`/bookings`, {
+      params: {
+        eventTypeIds: eventTypeIds,
+      },
+      headers: {
+        'cal-api-version': '2024-08-13',
+      },
+    });
+  }
 }

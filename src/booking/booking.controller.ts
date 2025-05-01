@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
 import { BookingService } from './booking.service';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -16,6 +16,11 @@ export class BookingController {
   @Get()
   findAll() {
     return this.bookingService.findAll();
+  }
+
+  @Get('/by-type-event-ids')
+  findByTypeEventIds(@Query('eventTypeIds') eventTypeIds: string) {
+    return this.bookingService.findByEventTypeIds(eventTypeIds);
   }
 
   @Get(':id')

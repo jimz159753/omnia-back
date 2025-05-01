@@ -16,7 +16,14 @@ export class EventTypeService {
   }
 
   async findAll() {
-    return await this.calApiService.get<IEventTypeResponse>('/event-types');
+    return await this.calApiService.get<IEventTypeResponse>('/event-types', {
+      headers: {
+        'cal-api-version': '2024-08-14',
+      },
+      params: {
+        username: 'prueba140992',
+      },
+    });
   }
 
   async findOne(id: number) {
