@@ -27,4 +27,10 @@ export class BookingController {
   findOne(@Param('id') id: string) {
     return this.bookingService.findOne(+id);
   }
+
+  @Post('/paid')
+  getPaidBooking(@Body() paidBooking: any) {
+    console.log('paidBooking', paidBooking);
+    return this.bookingService.getPaidBooking(paidBooking);
+  }
 }

@@ -32,4 +32,12 @@ export class BookingService {
       },
     });
   }
+
+  async getPaidBooking(paidBooking: any) {
+    // return await this.calApiService.get<BookingResponse>(`/bookings`, {
+    //   params: {
+    //     eventTypeIds: paidBooking.eventTypeIds,
+    //   },
+    // });
+  }
 }
