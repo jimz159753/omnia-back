@@ -10,7 +10,15 @@ import { CalApiModule } from './cal-api/cal-api.module';
 import { BookingModule } from './booking/booking.module';
 
 @Module({
-  imports: [ClientModule, DatabaseModule, UserModule, AuthModule, EventTypeModule, CalApiModule, BookingModule],
+  imports: [
+    ClientModule,
+    DatabaseModule,
+    UserModule,
+    AuthModule,
+    EventTypeModule,
+    CalApiModule,
+    BookingModule,
+  ],
   providers: [DatabaseService, CalApiService],
 })
 export class AppModule {}
