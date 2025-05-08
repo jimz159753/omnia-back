@@ -987,6 +987,7 @@ export namespace Prisma {
     updatedAt: Date | null
     email: string | null
     phone: string | null
+    status: string | null
   }
 
   export type ClientMaxAggregateOutputType = {
@@ -996,6 +997,7 @@ export namespace Prisma {
     updatedAt: Date | null
     email: string | null
     phone: string | null
+    status: string | null
   }
 
   export type ClientCountAggregateOutputType = {
@@ -1005,6 +1007,7 @@ export namespace Prisma {
     updatedAt: number
     email: number
     phone: number
+    status: number
     _all: number
   }
 
@@ -1024,6 +1027,7 @@ export namespace Prisma {
     updatedAt?: true
     email?: true
     phone?: true
+    status?: true
   }
 
   export type ClientMaxAggregateInputType = {
@@ -1033,6 +1037,7 @@ export namespace Prisma {
     updatedAt?: true
     email?: true
     phone?: true
+    status?: true
   }
 
   export type ClientCountAggregateInputType = {
@@ -1042,6 +1047,7 @@ export namespace Prisma {
     updatedAt?: true
     email?: true
     phone?: true
+    status?: true
     _all?: true
   }
 
@@ -1138,6 +1144,7 @@ export namespace Prisma {
     updatedAt: Date
     email: string
     phone: string
+    status: string
     _count: ClientCountAggregateOutputType | null
     _avg: ClientAvgAggregateOutputType | null
     _sum: ClientSumAggregateOutputType | null
@@ -1166,6 +1173,7 @@ export namespace Prisma {
     updatedAt?: boolean
     email?: boolean
     phone?: boolean
+    status?: boolean
   }, ExtArgs["result"]["client"]>
 
   export type ClientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1175,6 +1183,7 @@ export namespace Prisma {
     updatedAt?: boolean
     email?: boolean
     phone?: boolean
+    status?: boolean
   }, ExtArgs["result"]["client"]>
 
   export type ClientSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1184,6 +1193,7 @@ export namespace Prisma {
     updatedAt?: boolean
     email?: boolean
     phone?: boolean
+    status?: boolean
   }, ExtArgs["result"]["client"]>
 
   export type ClientSelectScalar = {
@@ -1193,9 +1203,10 @@ export namespace Prisma {
     updatedAt?: boolean
     email?: boolean
     phone?: boolean
+    status?: boolean
   }
 
-  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "email" | "phone", ExtArgs["result"]["client"]>
+  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "createdAt" | "updatedAt" | "email" | "phone" | "status", ExtArgs["result"]["client"]>
 
   export type $ClientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Client"
@@ -1207,6 +1218,7 @@ export namespace Prisma {
       updatedAt: Date
       email: string
       phone: string
+      status: string
     }, ExtArgs["result"]["client"]>
     composites: {}
   }
@@ -1636,6 +1648,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Client", 'DateTime'>
     readonly email: FieldRef<"Client", 'String'>
     readonly phone: FieldRef<"Client", 'String'>
+    readonly status: FieldRef<"Client", 'String'>
   }
     
 
@@ -3038,7 +3051,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     email: 'email',
-    phone: 'phone'
+    phone: 'phone',
+    status: 'status'
   };
 
   export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
@@ -3144,6 +3158,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Client"> | Date | string
     email?: StringFilter<"Client"> | string
     phone?: StringFilter<"Client"> | string
+    status?: StringFilter<"Client"> | string
   }
 
   export type ClientOrderByWithRelationInput = {
@@ -3153,6 +3168,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    status?: SortOrder
   }
 
   export type ClientWhereUniqueInput = Prisma.AtLeast<{
@@ -3165,6 +3181,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Client"> | Date | string
     updatedAt?: DateTimeFilter<"Client"> | Date | string
     email?: StringFilter<"Client"> | string
+    status?: StringFilter<"Client"> | string
   }, "id" | "name" | "phone">
 
   export type ClientOrderByWithAggregationInput = {
@@ -3174,6 +3191,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    status?: SortOrder
     _count?: ClientCountOrderByAggregateInput
     _avg?: ClientAvgOrderByAggregateInput
     _max?: ClientMaxOrderByAggregateInput
@@ -3191,6 +3209,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
     email?: StringWithAggregatesFilter<"Client"> | string
     phone?: StringWithAggregatesFilter<"Client"> | string
+    status?: StringWithAggregatesFilter<"Client"> | string
   }
 
   export type UserWhereInput = {
@@ -3248,6 +3267,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     email: string
     phone: string
+    status: string
   }
 
   export type ClientUncheckedCreateInput = {
@@ -3257,6 +3277,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     email: string
     phone: string
+    status: string
   }
 
   export type ClientUpdateInput = {
@@ -3265,6 +3286,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClientUncheckedUpdateInput = {
@@ -3274,6 +3296,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClientCreateManyInput = {
@@ -3283,6 +3306,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     email: string
     phone: string
+    status: string
   }
 
   export type ClientUpdateManyMutationInput = {
@@ -3291,6 +3315,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type ClientUncheckedUpdateManyInput = {
@@ -3300,6 +3325,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateInput = {
@@ -3392,6 +3418,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    status?: SortOrder
   }
 
   export type ClientAvgOrderByAggregateInput = {
@@ -3405,6 +3432,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    status?: SortOrder
   }
 
   export type ClientMinOrderByAggregateInput = {
@@ -3414,6 +3442,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     email?: SortOrder
     phone?: SortOrder
+    status?: SortOrder
   }
 
   export type ClientSumOrderByAggregateInput = {

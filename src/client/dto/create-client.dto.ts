@@ -13,4 +13,8 @@ export class CreateClientDto {
   @ApiProperty({ description: 'phone', example: '3315027257' })
   @IsString()
   phone: string;
+
+  @ApiProperty({ description: 'status', example: 'paid' })
+  @IsString()
+  status: string;
 }

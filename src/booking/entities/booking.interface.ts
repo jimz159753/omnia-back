@@ -45,3 +45,13 @@ export interface BookingResponse {
     };
   };
 }
+
+export interface PaidBooking {
+  payload: {
+    responses: {
+      name: { value: string };
+      email: { value: string };
+      phone: { value: string };
+    };
+  };
+}

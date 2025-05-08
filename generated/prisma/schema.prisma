@@ -21,6 +21,7 @@ model Client {
   updatedAt DateTime @updatedAt
   email     String
   phone     String   @unique
+  status    String
 }
 
 model User {
