@@ -60,6 +60,7 @@ export class BookingController {
   @HttpCode(HttpStatus.OK)
   @HttpCode(HttpStatus.NOT_FOUND)
   getPaidBooking(@Body() paidBooking: PaidBooking) {
+    console.log(paidBooking);
     return this.bookingService.getPaidBooking(paidBooking);
   }
 }

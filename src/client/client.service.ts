@@ -49,4 +49,12 @@ export class ClientService {
       },
     });
   }
+
+  async makeCheckin(clientId: number) {
+    return await this.databaseService.client.update({
+      where: { id: clientId },
+      data: { checkin: true },
+      include: { payments: true },
+    });
+  }
 }

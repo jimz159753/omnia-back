@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBookingDto } from './dto/create-booking.dto';
 import { CalApiService } from 'src/cal-api/cal-api.service';
-import { BookingResponse, PaidBooking } from './entities/booking.interface';
+import {
+  BookingResponse,
+  PaidBooking,
+  PaymentStatus,
+} from './entities/booking.interface';
 import { DatabaseService } from 'src/database/database.service';
-import { ClientStatus } from 'src/client/entities/client.interface';
 
 @Injectable()
 export class BookingService {
@@ -39,11 +42,11 @@ export class BookingService {
   }
   async getPaidBooking(paidBooking: PaidBooking) {
     const { name, email, phone } = paidBooking.payload.responses;
-    const client = await this.databaseService.client.findUnique({
+    const price = paidBooking.payload.price;
+    const client = await this.databaseService.client.findFirst({
       // check if client already exists
       where: {
-        phone: phone.value,
-        email: email.value,
+        OR: [{ phone: phone.value }, { email: email.value }],
       },
     });
     if (!client) {
@@ -52,20 +55,32 @@ export class BookingService {
         name: name.value,
         email: email.value,
         phone: phone.value,
-        status: ClientStatus.PAID,
+        payments: {
+          create: {
+            amount: price,
+            status: PaymentStatus.PAID,
+          },
+        },
       };
-      return await this.databaseService.client.create({ data: newClient });
+      return await this.databaseService.client.create({
+        data: newClient,
+        include: { payments: true },
+      });
     } else {
       // update client and add status to client
       const updatedClient = {
-        status: ClientStatus.PAID,
+        payments: {
+          create: {
+            amount: price,
+            status: PaymentStatus.PAID,
+          },
+        },
       };
       return await this.databaseService.client.update({
         where: { id: client.id },
         data: updatedClient,
+        include: { payments: true },
       });
     }
   }
-
-  // make checkin for paid booking
 }

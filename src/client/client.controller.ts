@@ -96,4 +96,21 @@ export class ClientController {
   remove(@Param('id') id: string) {
     return this.clientService.remove(+id);
   }
+
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard)
+  @Post(':id/checkin')
+  @HttpCode(HttpStatus.ACCEPTED)
+  @HttpCode(HttpStatus.NOT_FOUND)
+  @ApiResponse({
+    status: HttpStatus.ACCEPTED,
+    description: 'Client checkin successfully',
+  })
+  @ApiResponse({
+    status: HttpStatus.NOT_FOUND,
+    description: 'Client not found',
+  })
+  makeCheckin(@Param('id') id: string) {
+    return this.clientService.makeCheckin(+id);
+  }
 }

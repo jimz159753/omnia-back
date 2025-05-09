@@ -124,7 +124,16 @@ exports.Prisma.ClientScalarFieldEnum = {
   updatedAt: 'updatedAt',
   email: 'email',
   phone: 'phone',
-  status: 'status'
+  checkin: 'checkin'
+};
+
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  clientId: 'clientId'
 };
 
 exports.Prisma.UserScalarFieldEnum = {
@@ -147,6 +156,7 @@ exports.Prisma.QueryMode = {
 
 exports.Prisma.ModelName = {
   Client: 'Client',
+  Payment: 'Payment',
   User: 'User'
 };
 

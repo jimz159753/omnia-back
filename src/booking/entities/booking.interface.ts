@@ -48,10 +48,16 @@ export interface BookingResponse {
 
 export interface PaidBooking {
   payload: {
+    price: number;
     responses: {
       name: { value: string };
       email: { value: string };
       phone: { value: string };
     };
   };
+}
+
+export enum PaymentStatus {
+  PAID = 'PAID',
+  UNPAID = 'UNPAID',
 }
