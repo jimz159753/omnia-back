@@ -55,6 +55,7 @@ export class BookingService {
         name: name.value,
         email: email.value,
         phone: phone.value,
+        checkin: false,
         payments: {
           create: {
             amount: price,
@@ -69,6 +70,7 @@ export class BookingService {
     } else {
       // update client and add status to client
       const updatedClient = {
+        checkin: false,
         payments: {
           create: {
             amount: price,

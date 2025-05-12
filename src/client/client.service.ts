@@ -15,11 +15,14 @@ export class ClientService {
     };
     return this.databaseService.client.create({
       data: client,
+      include: { payments: true },
     });
   }
 
   async findAll() {
-    return await this.databaseService.client.findMany();
+    return await this.databaseService.client.findMany({
+      include: { payments: true },
+    });
   }
 
   async findOne(id: number) {
@@ -27,6 +30,7 @@ export class ClientService {
       where: {
         id,
       },
+      include: { payments: true },
     });
   }
 
