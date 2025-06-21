@@ -175,13 +175,13 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "prisma+postgres://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiNDg1ZTM0NjYtYzZkZC00NzI0LWE0MjItM2Q4ZWIwZjg3OWRiIiwidGVuYW50X2lkIjoiNTAyNDU0OTc0MzRlOTMyM2Y4ODdmOWY4ZjEzYWU5YzY2OTBjYzdmODc1Yjg2ZGQyNmJkOGRkODE4MThlMzJiZiIsImludGVybmFsX3NlY3JldCI6ImYyNWUyNDc3LThhNTAtNGU3Yy05ZTViLTg4NjliOTk5NWQxMCJ9.6jSAEdS3KuohG6Iy0zWLrY48tdpAh4rRD14Ny61rrBs"
+        "value": "postgresql://postgres:password@localhost:5432/postgres?schema=public"
       }
     }
   },
   "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Client {\n  id        Int       @id @default(autoincrement())\n  name      String    @unique\n  createdAt DateTime  @default(now())\n  updatedAt DateTime  @updatedAt\n  email     String    @unique\n  phone     String    @unique\n  checkin   Boolean   @default(false)\n  payments  Payment[]\n}\n\nmodel Payment {\n  id        Int      @id @default(autoincrement())\n  amount    Int\n  status    String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n  clientId  Int\n  client    Client   @relation(fields: [clientId], references: [id])\n}\n\nmodel User {\n  id        Int      @id @default(autoincrement())\n  email     String   @unique\n  password  String\n  createdAt DateTime @default(now())\n}\n",
   "inlineSchemaHash": "8757ef5bd26c3801283ed42fdcac0cbc01b616d18afb440a6dda44fed2c7d2c4",
-  "copyEngine": false
+  "copyEngine": true
 }
 
 const fs = require('fs')
@@ -218,3 +218,9 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
+// file annotations for bundling tools to include these files
+path.join(__dirname, "query_engine-windows.dll.node");
+path.join(process.cwd(), "generated/prisma/query_engine-windows.dll.node")
+// file annotations for bundling tools to include these files
+path.join(__dirname, "schema.prisma");
+path.join(process.cwd(), "generated/prisma/schema.prisma")
